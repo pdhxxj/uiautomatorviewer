@@ -277,7 +277,7 @@ public class UiAutomatorView extends Composite {
                 	item10.addSelectionListener(new SelectionAdapter(){
                 		@Override
                 		public void widgetSelected(SelectionEvent e){
-                			String script=getScriptByValueyAction(item10.getText(),item1.getText());
+                			String script=getScriptByAction(item10.getText(),item1.getText());
                 			chargeText(script);
                 			//scriptTextarea.setText(script);               			
                 		}
@@ -286,7 +286,7 @@ public class UiAutomatorView extends Composite {
                 	item11.addSelectionListener(new SelectionAdapter(){
                 			@Override
 							public void widgetSelected(SelectionEvent e){
-                				String script=getScriptByValueyAction(item11.getText(),item1.getText());
+                				String script=getScriptByAction(item11.getText(),item1.getText());
                 				chargeText(script);
                     			
                 		}
@@ -294,21 +294,21 @@ public class UiAutomatorView extends Composite {
                 	item12.addSelectionListener(new SelectionAdapter(){
             			@Override
 						public void widgetSelected(SelectionEvent e){
-            				String script=getScriptByValueyAction(item12.getText(),item1.getText());
+            				String script=getScriptByAction(item12.getText(),item1.getText());
             				chargeText(script);        			
             			}
                 	});
                 	item13.addSelectionListener(new SelectionAdapter(){
             			@Override
 						public void widgetSelected(SelectionEvent e){           				
-            				String script=getScriptByValueyAction(item13.getText(),item1.getText());
+            				String script=getScriptByAction(item13.getText(),item1.getText());
             				chargeText(script);            			
             			}
                 	});
                 	item14.addSelectionListener(new SelectionAdapter(){
             			@Override
 						public void widgetSelected(SelectionEvent e){
-            				String script=getScriptByValueyAction(item14.getText(),item1.getText());
+            				String script=getScriptByAction(item14.getText(),item1.getText());
             				chargeText(script);           			           			
             			}
                 	});
@@ -329,35 +329,35 @@ public class UiAutomatorView extends Composite {
                 	item20.addSelectionListener(new SelectionAdapter(){
             			@Override
 						public void widgetSelected(SelectionEvent e){
-            				String script=getScriptByValueyAction(item20.getText(),item3.getText());
+            				String script=getScriptByAction(item20.getText(),item3.getText());
             				chargeText(script);           			           			
             			}
                 	});
                  	item21.addSelectionListener(new SelectionAdapter(){
             			@Override
 						public void widgetSelected(SelectionEvent e){
-            				String script=getScriptByValueyAction(item21.getText(),item3.getText());
+            				String script=getScriptByAction(item21.getText(),item3.getText());
             				chargeText(script);           			           			
             			}
                 	});
                  	item22.addSelectionListener(new SelectionAdapter(){
             			@Override
 						public void widgetSelected(SelectionEvent e){
-            				String script=getScriptByValueyAction(item22.getText(),item3.getText());
+            				String script=getScriptByAction(item22.getText(),item3.getText());
             				chargeText(script);           			           			
             			}
                 	});
                  	item23.addSelectionListener(new SelectionAdapter(){
             			@Override
 						public void widgetSelected(SelectionEvent e){
-            				String script=getScriptByValueyAction(item23.getText(),item3.getText());
+            				String script=getScriptByAction(item23.getText(),item3.getText());
             				chargeText(script);           			           			
             			}
                 	});
                  	item24.addSelectionListener(new SelectionAdapter(){
             			@Override
 						public void widgetSelected(SelectionEvent e){
-            				String script=getScriptByValueyAction(item24.getText(),item3.getText());
+            				String script=getScriptByAction(item24.getText(),item3.getText());
             				chargeText(script);           			           			
             			}
                 	});
@@ -427,7 +427,7 @@ public class UiAutomatorView extends Composite {
             }
                        
             
-			private String getScriptByValueyAction(String id,String ac) {
+			private String getScriptByAction(String id,String ac) {
 				// TODO Auto-generated methoad stub
 				String script="driver";
 				String res="";
