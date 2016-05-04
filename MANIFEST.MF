@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Main-Class: com.android.uiautomator.UiAutomatorViewer
+Class-Path:  org-eclipse-jface-3.6.2.jar ddmlib.jar org-eclipse-core-c
+ ommands-3.6.0.jar org-eclipse-equinox-common-3.6.0.jar osgi-4.0.0.jar
+  common.jar kxml2-2.3.0.jar guava-17.0.jar
+
