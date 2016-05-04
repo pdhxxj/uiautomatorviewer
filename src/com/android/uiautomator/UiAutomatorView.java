@@ -185,6 +185,7 @@ public class UiAutomatorView extends Composite {
                 	MenuItem item7=new MenuItem(menu,SWT.CASCADE);
                 	MenuItem item8=new MenuItem(menu,SWT.CASCADE);
                 	MenuItem item9=new MenuItem(menu,SWT.CASCADE);
+                	MenuItem item43=new MenuItem(menu,SWT.CASCADE);
                 	MenuItem item10=new MenuItem(menu1,SWT.NONE);
                 	MenuItem item11=new MenuItem(menu1,SWT.NONE);
                 	MenuItem item12=new MenuItem(menu1,SWT.NONE);
@@ -218,6 +219,7 @@ public class UiAutomatorView extends Composite {
                 	MenuItem item40=new MenuItem(menu8,SWT.NONE);
                 	MenuItem item41=new MenuItem(menu8,SWT.NONE);
                 	MenuItem item42=new MenuItem(menu8,SWT.NONE);
+                	MenuItem item44=new MenuItem(menu6,SWT.NONE);
                 	//set item text
                 	item1.setText("Click");
                 	item2.setText("Click(Refresh)");
@@ -225,7 +227,8 @@ public class UiAutomatorView extends Composite {
                 	item4.setText("longClick(Refresh)");
                 	item5.setText("editText");
                 	item6.setText("SystemCommand");
-                	item7.setText("Sleep");
+                	item7.setText("SystemCommand(Refresh)");
+                	item43.setText("Sleep");
                 	item8.setText("Check");
                 	item9.setText("Find");
                 	item10.setText("id");
@@ -261,11 +264,12 @@ public class UiAutomatorView extends Composite {
                 	item40.setText("desc");
                 	item41.setText("class");
                 	item42.setText("xpath");
+                	item44.setText("Other");
                 	//bind menu
                 	item1.setMenu(menu1);
-                	item2.setMenu(menu2);
+                	//item2.setMenu(menu2);
                 	item3.setMenu(menu3);
-                	item4.setMenu(menu4);
+                	//item4.setMenu(menu4);
                 	item5.setMenu(menu5);
                 	item6.setMenu(menu6);
                 	//item7.setMenu(menu7);
@@ -315,10 +319,10 @@ public class UiAutomatorView extends Composite {
                 	
                 	//click(refresh) item15-19
                 	
-                 	item15.addSelectionListener(new SelectionAdapter(){
+                 	item2.addSelectionListener(new SelectionAdapter(){
             			@Override
 						public void widgetSelected(SelectionEvent e){
-            				objectClick();
+            				objectClick(item2.getText(),"");
             				UiAutomatorViewer window=UiAutomatorViewer.getInstance();
             				ScreenshotAction screenshot=new ScreenshotAction(window, false);
             				screenshot.run();
@@ -362,11 +366,24 @@ public class UiAutomatorView extends Composite {
             			}
                 	});
                 	
+                 	//longclick(refresh)
+                 	item4.addSelectionListener(new SelectionAdapter(){
+            			@Override
+						public void widgetSelected(SelectionEvent e){
+            				objectClick(item4.getText(),"");
+            				UiAutomatorViewer window=UiAutomatorViewer.getInstance();
+            				ScreenshotAction screenshot=new ScreenshotAction(window, false);
+            				screenshot.run();
+            			}
+
+						
+                	});
+                 	
                 	//edittext item33-37
                 	item33.addSelectionListener(new SelectionAdapter(){
                 		@Override
                 		public void widgetSelected(SelectionEvent e){
-                			InputDialog dialog=new InputDialog(getShell(),"please input text","please input",null,null);
+                			InputDialog dialog=new InputDialog(getShell(),"please input id","please input",null,null);
                 			if(dialog.open()==InputDialog.OK){
                 				String script=getScriptByValue(item33.getText(),dialog.getValue());
                 				chargeText(script);
@@ -386,7 +403,7 @@ public class UiAutomatorView extends Composite {
                 	item35.addSelectionListener(new SelectionAdapter(){
                 		@Override
                 		public void widgetSelected(SelectionEvent e){
-                			InputDialog dialog=new InputDialog(getShell(),"please input text","please input",null,null);
+                			InputDialog dialog=new InputDialog(getShell(),"please input desc","please input",null,null);
                 			if(dialog.open()==InputDialog.OK){
                 				String script=getScriptByValue(item35.getText(),dialog.getValue());
                 				chargeText(script);
@@ -396,7 +413,7 @@ public class UiAutomatorView extends Composite {
                 	item36.addSelectionListener(new SelectionAdapter(){
                 		@Override
                 		public void widgetSelected(SelectionEvent e){
-                			InputDialog dialog=new InputDialog(getShell(),"please input text","please input",null,null);
+                			InputDialog dialog=new InputDialog(getShell(),"please input class","please input",null,null);
                 			if(dialog.open()==InputDialog.OK){
                 				String script=getScriptByValue(item36.getText(),dialog.getValue());
                 				chargeText(script);
@@ -406,12 +423,63 @@ public class UiAutomatorView extends Composite {
                 	item37.addSelectionListener(new SelectionAdapter(){
                 		@Override
                 		public void widgetSelected(SelectionEvent e){
-                			InputDialog dialog=new InputDialog(getShell(),"please input text","please input",null,null);
+                			InputDialog dialog=new InputDialog(getShell(),"please input xpath","please input",null,null);
                 			if(dialog.open()==InputDialog.OK){
                 				String script=getScriptByValue(item37.getText(),dialog.getValue());
                 				chargeText(script);
                 			}               			             			
                 		}
+                	});
+                	//systemcommand
+                	item30.addSelectionListener(new SelectionAdapter(){
+            			@Override
+						public void widgetSelected(SelectionEvent e){
+            				String script=getScriptByCommand(item30.getText(),"3");
+            				chargeText(script);
+            			}
+                	});
+                	item31.addSelectionListener(new SelectionAdapter(){
+            			@Override
+						public void widgetSelected(SelectionEvent e){
+            				String script=getScriptByCommand(item31.getText(),"4");
+            				chargeText(script);
+            			}
+                	});
+                	item32.addSelectionListener(new SelectionAdapter(){
+            			@Override
+						public void widgetSelected(SelectionEvent e){
+            				String script=getScriptByCommand(item32.getText(),"26");
+            				chargeText(script);
+            			}
+                	});
+                	item44.addSelectionListener(new SelectionAdapter(){
+            			@Override
+						public void widgetSelected(SelectionEvent e){
+            				InputDialog dialog=new InputDialog(getShell(),"please input text","please input",null,null);                			
+            				if(dialog.open()==InputDialog.OK&&dialog.getValue()!=""){
+                				String script=getScriptByCommand(item44.getText(),dialog.getValue());
+                				chargeText(script);
+                			}
+            				else{
+            					//MessageDialog mdialog=new MessageDialog(getShell(), null, null, "please enter text", MessageDialog.WARNING, null, MessageDialog.WARNING);
+            					//mdialog.open();
+            					dialog.open();
+            				}
+            			}
+                	});
+                	
+                	//systemcommand(refresh)
+                	item7.addSelectionListener(new SelectionAdapter(){
+            			@Override
+						public void widgetSelected(SelectionEvent e){
+            				InputDialog dialog=new InputDialog(getShell(),"please input keyevent","please input",null,null);
+            				if(dialog.open()==InputDialog.OK){
+            					objectClick(item7.getText(),dialog.getValue());
+            					UiAutomatorViewer window=UiAutomatorViewer.getInstance();
+                				ScreenshotAction screenshot=new ScreenshotAction(window, false);
+                				screenshot.run();
+                			}
+            			}
                 	});
                 }
             }
@@ -461,6 +529,25 @@ public class UiAutomatorView extends Composite {
 				return script;
 			}
 			
+			private String getScriptByCommand(String id,String value){
+				String script="driver";
+				switch(id){
+				case "Home":					
+					script+=".sendKeys(\""+value+"\")";
+					break;
+				case "Back":
+					script+=".sendKeys(\""+value+"\")";
+					break;
+				case "Power":
+					script+=".sendKeys(\""+value+"\")";
+					break;
+				case "Other":
+					script+=".sendKeys(\""+value+"\")";	
+					break;								
+			}
+			return script;
+			}
+			
 			private String getScriptByValue(String id,String value) {
 				// TODO Auto-generated method stub
 				String script="driver";
@@ -497,16 +584,10 @@ public class UiAutomatorView extends Composite {
 		    	switch(ac){
 		    		case "Click":
 		    			ca="click();";
-		    			break;
-		    		case "Click(Refresh)":
-		    			ca="click();";
-		    			break;		    				    		
+		    			break;		    		    				    		
 		    		case "longClick":
 		    			ca="longclick();";
-		    			break;
-		    		case "longClick(Refresh)":
-		    			ca="longclick();";
-		    			break;
+		    			break;		    	
 		    	}
 		    	return ca;
 		    }
@@ -518,17 +599,30 @@ public class UiAutomatorView extends Composite {
 					scriptTextarea.append(System.getProperty("line.separator")+res);
 				}
 			}
-			private void objectClick() {
+			private void objectClick(String ac,String value) {
 				Rectangle rect=mModel.getCurrentDrawingRect();
-				// TODO Auto-generated method stub
-				String adbStr="adb shell input tap "+(rect.x+rect.width/2)+" "+(rect.y+rect.height/2);
+				String adbStr="";
+				switch(ac){
+					case "Click(Refresh)":
+						adbStr="adb shell input tap "+(rect.x+rect.width/2)+" "+(rect.y+rect.height/2);
+						break;
+					case "LongClick(Refresh)":
+						adbStr="adb shell input tap "+(rect.x+rect.width/2)+" "+(rect.y+rect.height/2);
+						break;
+					case "SystemCommand(Refresh)":
+						adbStr="adb shell input keyevent "+value+"";
+						break;
+				}							
 				try {
+					System.out.println(adbStr);
 					Runtime.getRuntime().exec(adbStr);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
+			
+			
 			
         });
         mScreenshotCanvas.setBackground(
