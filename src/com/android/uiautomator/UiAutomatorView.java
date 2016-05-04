@@ -319,9 +319,9 @@ public class UiAutomatorView extends Composite {
             			@Override
 						public void widgetSelected(SelectionEvent e){
             				objectClick();
-            				//UiAutomatorViewer window=UiAutomatorViewer.getInstance();
-            				//ScreenshotAction screenshot=new ScreenshotAction(window, false);
-            				//screenshot.run();
+            				UiAutomatorViewer window=UiAutomatorViewer.getInstance();
+            				ScreenshotAction screenshot=new ScreenshotAction(window, false);
+            				screenshot.run();
             			}
                 	});
                 	

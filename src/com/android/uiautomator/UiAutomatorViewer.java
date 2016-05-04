@@ -44,10 +44,8 @@ public class UiAutomatorViewer extends ApplicationWindow {
     }
     public synchronized static UiAutomatorViewer getInstance(){
     	if(uViewerInstance==null){
-    		System.out.println("!");
-    		
     		uViewerInstance=new UiAutomatorViewer();
-    		//uViewerInstance.setBlockOnOpen(false);
+    		
     	}
     	return uViewerInstance;
     }
@@ -87,6 +85,7 @@ public class UiAutomatorViewer extends ApplicationWindow {
         try {
             UiAutomatorViewer window = new UiAutomatorViewer();
             //System.out.println(window);
+            	uViewerInstance=window;
 	            window.setBlockOnOpen(true);
 	            window.open();
             
